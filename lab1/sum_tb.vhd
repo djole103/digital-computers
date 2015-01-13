@@ -31,15 +31,15 @@ begin
   end process;
   
 end architecture;
-
 -- question 2
--- signal   | waveform description
--- a
--- b
--- cin
--- the_sum  
-
+  -- a  	0 1 0 0
+  -- b          0 0 0 0
+  -- cin        0 0 1 0
+  -- sum        0 1 1 0
 
 -- question 3
-  --insert answer here
+  -- the sum will repeat itself with a period of 30ns.
+  -- the semantics cause the process in the testbench to keep repeating and
+  -- since within each 10ns interval all three inputs are assigned to, 
+  -- the output repeats itself as well.
 

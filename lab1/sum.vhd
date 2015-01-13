@@ -8,11 +8,12 @@ entity sum is
 end sum;
 
 architecture main of sum is
-
+BEGIN
 	o_sum <= i_a xor i_b xor i_cin;
 
 end architecture;
 
 -- question 1
-  -- insert answer here
-
+  -- we have pins i_cin and i_a being inputted into logical xor block ix1.
+  -- output of this and the i_b pin are being fed into logical xor block ix3.
+  -- the output of ix3 is o_sum
