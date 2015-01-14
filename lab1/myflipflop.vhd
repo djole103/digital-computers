@@ -31,18 +31,23 @@ begin
   end process; 
 
   proc_a : process
-      -- insert code for part (a) here
+  begin
+      wait until rising_edge(i_clock);
+      o_q_a <= (i_d and not i_reset);
   end process;
 
   proc_b : process
+  begin
       -- insert code for part (b) here
   end process;
 
   proc_c : process
+  begin
       -- insert code for part (c) here
   end process;
 
   proc_d : process
+  begin
       -- insert code for part (d) here
   end process;
 
