@@ -19,33 +19,47 @@ entity myflipflop is
 end myflipflop;
 
 architecture main of myflipflop is
-
-  -- define any extra signals here
-
+    signal x_fb : std_logic;
 begin
 
   basic : process
   begin
-      wait until rising_edge(i_clock);
-      o_q <= i_d;
+    wait until rising_edge(i_clock);
+    o_q <= i_d;
   end process; 
 
   proc_a : process
-      -- insert code for part (a) here
+  begin
+    wait until rising_edge(i_clock);
+    o_q_a <= (i_d and not i_reset);
   end process;
 
   proc_b : process
-      -- insert code for part (b) here
+  begin
+    wait until rising_edge(i_clock);
+    if i_ce = '1' then
+      o_q_b <= i_d;
+    end if;
   end process;
 
   proc_c : process
-      -- insert code for part (c) here
+  begin
+    wait until rising_edge(i_clock);
+    case i_sel is
+        when '0' => o_q_c <= i_d;
+        when others => o_q_c <= i_d2;
+    end case;
   end process;
 
   proc_d : process
-      -- insert code for part (d) here
+  begin
+    wait until rising_edge(i_clock);
+    case i_sel is
+        when '0' => x_fb <= i_d;
+        when others => x_fb <= not x_fb;
+    end case;
   end process;
 
-  -- place any extra code or processes here
+  o_q_d <= x_fb;
 
 end architecture;
