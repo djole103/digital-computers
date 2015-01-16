@@ -55,8 +55,8 @@ begin
   begin
     wait until rising_edge(i_clock);
     case i_sel is
-        when '0' => o_q_d <= i_d;
-        when others => o_q_d <= not x_fb;
+        when '0' => x_fb <= i_d;
+        when others => x_fb <= not x_fb;
     end case;
   end process;
 
