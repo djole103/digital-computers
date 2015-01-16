@@ -21,7 +21,6 @@ end myflipflop;
 architecture main of myflipflop is
 	signal d_inv : std_logic;
 begin
-	o_q_d <= d_inv ;
   basic : process
   begin
       wait until rising_edge(i_clock);
@@ -64,5 +63,6 @@ begin
 	end process;
 
   -- place any extra code or processes here
+    o_q_d <= d_inv ;
 
 end architecture;
