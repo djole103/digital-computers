@@ -21,7 +21,6 @@ end myflipflop;
 architecture main of myflipflop is
     signal x_fb : std_logic;
 begin
-
   basic : process
   begin
     wait until rising_edge(i_clock);
