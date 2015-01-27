@@ -39,45 +39,45 @@ begin
 	res <= '0'; cur_temp <= "00000011"; des_temp <= "00011100";
 	wait until rising_edge(clk);
 	-- --------------------
-	res <= '0'; cur_temp <= "00000100"; des_temp <= "00000101";
+	res <= '0'; cur_temp <= "00000100"; des_temp <= "00000000";
 	wait until rising_edge(clk);
 	-- --------------------
-	res <= '0'; cur_temp <= to_signed(0,8); des_temp <= to_signed(4,8);
-	wait until rising_edge(clk);
+	--res <= '0'; cur_temp <= to_signed(0,8); des_temp <= to_signed(4,8);
+	--wait until rising_edge(clk);
 	-- --------------------
 	-- reset case for OFF
-	res <= '1'; cur_temp <= to_signed(0,8); des_temp <= to_signed(4,8);
-	wait until rising_edge(clk);
+	--res <= '1'; cur_temp <= to_signed(0,8); des_temp <= to_signed(4,8);
+	--wait until rising_edge(clk);
 	-- --------------------
 	-- LOW
 	-- --------------------
-	res <= '0'; cur_temp <= to_signed(0,8); des_temp <= to_signed(7,8);
-	wait until rising_edge(clk);
+	--res <= '0'; cur_temp <= to_signed(0,8); des_temp <= to_signed(7,8);
+	--wait until rising_edge(clk);
 	-- --------------------
-	res <= '0'; cur_temp <= to_signed(3,8); des_temp <= to_signed(0,8);
-	wait until rising_edge(clk);
+	--res <= '0'; cur_temp <= to_signed(3,8); des_temp <= to_signed(0,8);
+	--wait until rising_edge(clk);
 	-- --------------------
-	res <= '0'; cur_temp <= to_signed(1,8); des_temp <= to_signed(0,8);
-	wait until rising_edge(clk);
+	--res <= '0'; cur_temp <= to_signed(1,8); des_temp <= to_signed(0,8);
+	--wait until rising_edge(clk);
 	-- --------------------
-	res <= '0'; cur_temp <= to_signed(0,8); des_temp <= to_signed(5,8);
-	wait until rising_edge(clk);
+	--res <= '0'; cur_temp <= to_signed(0,8); des_temp <= to_signed(5,8);
+	--wait until rising_edge(clk);
 	-- --------------------
 	-- reset case for LOW
-	res <= '1'; cur_temp <= to_signed(3,8); des_temp <= to_signed(0,8);
-	wait until rising_edge(clk);
+	--res <= '1'; cur_temp <= to_signed(3,8); des_temp <= to_signed(0,8);
+	--wait until rising_edge(clk);
 	-- --------------------
 	-- HIGH
 	-- --------------------
-	res <= '0'; cur_temp <= to_signed(4,8); des_temp <= to_signed(0,8);
-	wait until rising_edge(clk);
+	--res <= '0'; cur_temp <= to_signed(4,8); des_temp <= to_signed(0,8);
+	--wait until rising_edge(clk);
 	-- --------------------
-	res <= '0'; cur_temp <= to_signed(2,8); des_temp <=  to_signed(0,8);
-	wait until rising_edge(clk);
+	--res <= '0'; cur_temp <= to_signed(2,8); des_temp <=  to_signed(0,8);
+	--wait until rising_edge(clk);
 	-- --------------------
 	-- reset case for HIGH
-	res <= '1'; cur_temp <= to_signed(4,8); des_temp <= to_signed(0,8);
-	wait until rising_edge(clk);
+	--res <= '1'; cur_temp <= to_signed(4,8); des_temp <= to_signed(0,8);
+	--wait until rising_edge(clk);
 	-- --------------------
 	end process;
 

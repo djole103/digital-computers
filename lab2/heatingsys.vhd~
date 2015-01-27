@@ -26,7 +26,7 @@ end heatingsys;
 architecture main of heatingsys is
   signal state : heat_ty;   
 begin
-o_heatmode <= state;
+
   -- insert your vhdl code here
   proc_statemachine : process
   begin
@@ -61,7 +61,7 @@ o_heatmode <= state;
         end case;
     end if;
   end process;
-
+o_heatmode <= state;
 
 end main;
 

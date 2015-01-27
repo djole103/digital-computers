@@ -1,0 +1,8 @@
+add wave -radix unsigned -color cyan des_temp
+add wave -radix unsigned -color cyan cur_temp
+add wave -color cyan res
+add wave -radix unsigned -color plum mode
+add wave -color orange clk
+
+run 150 ns
+
