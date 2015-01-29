@@ -61,6 +61,7 @@ architecture main of fir_top is
   
   signal display_freq      : std_logic_vector( 15 downto 0 );
   signal sine_freq         : unsigned(6 downto 0);
+  signal input_selector, output_selector : std_logic;
 
   --------------------------------------------------------------
   -- primary data signals
@@ -68,6 +69,8 @@ architecture main of fir_top is
   signal sine_data
        , noise_data
        , audio_out
+	   , unfiltered_audio
+	   , filtered_audio
        : word;
   
   --------------------------------------------------------------
@@ -89,6 +92,10 @@ begin
   -- inputs and waveform generation
 
   sine_freq     <= unsigned( sw(  6 downto 0 ) );
+  
+  -- \HK - audio source selector
+  input_selector <= sw(17);
+  output_selector <= sw(16);
 
   u_sine : entity work.sine_wave(sample_64)
     port map (
@@ -120,12 +127,34 @@ begin
   --
   -- Your FIR filter MUST be clocked with the data_clk 
 
+  ----------------------------------------------------
+  -- component instantation for the simple averaging fir filter
+
+  u_fir_avg : entity work.fir(avg)
+    port map (
+       clk     => data_clk
+	 , i_data  => unfiltered_audio
+	 , o_data  => filtered_audio
+	);
 
   process begin
     wait until rising_edge( data_clk );
-    audio_out <= sine_data;
+	if input_selector = '0' then
+		unfiltered_audio <= sine_data;
+	else
+		unfiltered_audio <= noise_data;
+	end if;
   end process;
-  
+
+  process begin
+    wait until rising_edge( data_clk );
+	if output_selector = '0' then
+		audio_out <= unfiltered_audio;
+	else
+		audio_out <= filtered_audio;
+	end if;
+  end process;
+
   --------------------------------------------------------------
   -- HEX outputs to display the frequency
   --
@@ -139,8 +168,15 @@ begin
 
 
   ----------------------------------------------------
-  
-  display_freq <= frequency_map( to_integer ( sine_freq ) );
+  process (input_selector, sine_freq)
+  begin
+	  if input_selector = '0' then
+		  display_freq <= frequency_map( to_integer ( sine_freq ) );
+	  else
+		  display_freq <= x"015e";
+	  end if;
+
+  end process;
 
   hex7 <= to_sevenseg( unsigned(display_freq(15 downto 12)) );
   hex6 <= to_sevenseg( unsigned(display_freq(11 downto  8)) );
@@ -152,6 +188,7 @@ begin
   hex1 <= (others => 'Z');
   hex0 <= (others => 'Z');
   
+
   ----------------------------------------------------
   -- serial output for audio
   
@@ -165,7 +202,7 @@ begin
       bit_position <= bit_position + 1;
     end if;
   end process;
-    
+  
   serial_audio_out <= audio_out(to_integer(15 - bit_position));
   
   aud_dacdat       <= serial_audio_out;

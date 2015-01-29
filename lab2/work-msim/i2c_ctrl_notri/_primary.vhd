@@ -11,7 +11,7 @@ entity i2c_ctrl_notri is
         p_i2c_data_5    : in     vl_logic_vector(22 downto 21);
         p_i2c_sclk      : out    vl_logic;
         p_start_xfr     : in     vl_logic;
-        p_reset_rtlc_164_and_32: in     vl_logic_vector(2 downto 2);
+        p_reset_rtlc_164_and_35: in     vl_logic_vector(2 downto 2);
         p_ack           : out    vl_logic;
         p_not_sdo       : out    vl_logic;
         p_clock         : in     vl_logic;

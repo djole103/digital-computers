@@ -84,7 +84,7 @@ begin
 end architecture;
 
 -- question 2
-  -- insert your answer here
+  -- looking at the file lab2/RPT/area_logic.rpt we see that an adder with carry takes up 16 LUTs and on with no carry takes up 15 LUTs
 
 -- question 3
-  -- insert your answer here
+  -- first we could not see any multipliers in the design because the compiler was getting rid of them in the optimization process but then we added a line o_data <= mult(i_data,i_data) to force a multiplier and commented everything else out. result was interesting. no LUTs were occupied by the multiplier
