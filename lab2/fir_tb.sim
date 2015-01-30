@@ -3,5 +3,5 @@ add wave -radix hexadecimal -color cyan ind
 add wave -radix hexadecimal -color red outd
 add wave -color orange clkd
 
-run 80 ns
+run 500 ns
 

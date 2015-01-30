@@ -130,7 +130,7 @@ begin
   ----------------------------------------------------
   -- component instantation for the simple averaging fir filter
 
-  u_fir_avg : entity work.fir(avg)
+  u_fir_avg : entity work.fir(low_pass)
     port map (
        clk     => data_clk
 	 , i_data  => unfiltered_audio

@@ -15,7 +15,7 @@ entity modgen_counter_6_0 is
         p_p_reset       : in     vl_logic;
         p_p_clk         : in     vl_logic;
         p_m_i2c_ctrl_clk_dup_364: in     vl_logic;
-        px765           : in     vl_logic;
+        px755           : in     vl_logic;
         p_p_clock       : in     vl_logic
     );
 end modgen_counter_6_0;

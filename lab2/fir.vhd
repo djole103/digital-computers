@@ -71,9 +71,9 @@ architecture low_pass of fir is
   -- Use the signal names tap, prod, and sum, but change the type to
   -- match your needs.
   
+  signal tap : word_vector(1 to num_taps);
   signal prod: word_vector(1 to num_taps);
-  signal tap : word_vector(1 to num_taps+1);
-  signal sum : word_vector(1 to num_taps-1);
+  signal sum : word_vector(1 to num_taps-2);
 
   attribute logic_block of tap, prod, sum : signal is true;
   -- The attribute line below is usually needed to avoid a warning
@@ -86,38 +86,26 @@ begin
   tap(1) <= i_data;
 
   delay_line : for i in 1 to num_taps-1 generate
-	process(clk, tap(i))
+	process(clk)
 	begin
 	  if (rising_edge(clk)) then
 		tap(i+1) <= tap(i);
 	  end if;
 	end process;
-  end generate;
+  end generate delay_line;
 
-  prod_process : for i in 1 to num_taps-1 generate
-	process(clk,tap(i+1))
-	begin
-	  prod(i) <= mult( tap(i+1), lpcoef(i+1));
-	end process;
-  end generate;
+  prod_process : for i in 1 to num_taps generate
+	prod(i) <= mult( tap(i), lpcoef(i));
+  end generate prod_process;
 
-  process(clk)
-  begin
-	if(rising_edge(clk))then
-	  sum(1) <= prod(1) + prod(2);
-	end if;
-  end process;
+  
+  sum(1) <= prod(1) + prod(2);
 
   sum_process : for i in 2 to num_taps-2 generate
-	process(clk)
-	begin
-	  if (rising_edge(clk)) then
-		sum(i) <= sum(i-1) + prod(i+1);
-	  end if;
-	end process;
-  end generate;
+	sum(i) <= sum(i-1) + prod(i+1);
+  end generate sum_process;
 
-  o_data <= sum(16);
+  o_data <= sum(15);
 
 end architecture;
 

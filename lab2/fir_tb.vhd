@@ -33,9 +33,24 @@ begin
 		wait until rising_edge(clkd);
 		wait until rising_edge(clkd);
 		wait until rising_edge(clkd);
+		wait until rising_edge(clkd);
+		wait until rising_edge(clkd);
+		wait until rising_edge(clkd);
+		wait until rising_edge(clkd);
+		wait until rising_edge(clkd);
+		wait until rising_edge(clkd);
+		wait until rising_edge(clkd);
+		wait until rising_edge(clkd);
+		wait until rising_edge(clkd);
+		wait until rising_edge(clkd);
+		wait until rising_edge(clkd);
+		wait until rising_edge(clkd);
+		wait until rising_edge(clkd);
+		wait until rising_edge(clkd);
 		ind <= x"1000";
 		wait until rising_edge(clkd);
 		ind <= x"0000";
+
 	end process;
 
 	process
