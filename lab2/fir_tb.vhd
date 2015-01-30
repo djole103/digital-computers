@@ -18,7 +18,7 @@ architecture main of fir_tb is
    signal clkd  : std_logic := '0';
 begin
 
-	uut : entity work.fir(avg)
+	uut : entity work.fir(low_pass)
 	 port map (
 		 i_data    => ind,
 		 o_data    => outd,
