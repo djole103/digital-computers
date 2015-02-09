@@ -13,74 +13,76 @@ entity lab3 is
 end entity lab3;
 
 architecture main of lab3 is
-	signal mem1_add : unsigned(7 downto 0);
-	signal mem1_data : unsigned(7 downto 0);
-	signal mem1_out : unsigned(7 downto 0);
-	signal mem2_add : unsigned(7 downto 0);
-	signal mem2_data : unsigned(7 downto 0);
-	signal mem2_out : unsigned(7 downto 0);
-	signal mem3_add : unsigned(7 downto 0);
-	signal mem3_data : unsigned(7 downto 0);
-	signal mem3_out : unsigned(7 downto 0);
-  -- A function to rotate left (rol) a vector by n bits
+	signal wnotr: std_logic_vector(2 downto 0):="000";
+	signal add: std_logic_vector (3 downto 0):="0000"; 
+  type rows : is array(2 downto 0) of std_logic_vector(7 downto 0);
+	signal row : rows;
+	signal enoughData : std_logic;
+	signal totalRow : unsigned(3 downto 0);
+
+	
+	-- A function to rotate left (rol) a vector by n bits
   function "rol" ( a : std_logic_vector; n : natural )
     return std_logic_vector
   is
   begin
     return std_logic_vector( unsigned(a) rol n );
   end function;
+	
 
 
 
 begin
-  
-  mem_1 : entity work.mem(main)
-    port map (
-	  address  => mem1_add,
-	  clock    => clk,
-	  data     => i_data,
-	  wren     => i_valid,
-	  q        => mem1_out,
-    );
+	  mem_1 : entity work.mem(main)
+		port map (
+		  address  => add,
+		  clock    => clk,
+		  data     => i_data,
+		  wren     => wnotr(0),
+		  q        => row(0),
+		);
   
   mem_2 : entity work.mem(main)
     port map (
-	  address  => mem2_add,
+	  address  => add,
 	  clock    => clk,
 	  data     => i_data,
-	  wren     => i_valid,
-	  q        => mem2_out,
+	  wren     => wnotr(1),
+	  q        => row(1),
     );
   
   mem_3 : entity work.mem(main)
     port map (
-	  address  => mem3_add,
+	  address  => add,
 	  clock    => clk,
 	  data     => i_data,
-	  wren     => i_valid,
-	  q        => mem3_out,
+	  wren     => wnotr(2),
+	  q        => row(2),
     );
 
-a <= "00000000";
-b <= "10000000";
-c <= i_data;
-
-
-sub1 <= a - b;
-
-main : process 
+main : process
 begin
 	wait until rising_edge(clk);
-	r2 <= c;
-	r1 <= sub1;
+	if(i_valid and not reset) then
+
+		if(not enoughData) then
+		
+		end if;
+	end if;
+end process;
+
+control : process 
+begin
 	wait until rising_edge(clk);
-	r3 <= r1+r2;
-
-
-    --c need to be registered
-	--grab bytes from reg for a, b, c
-	
-	
+	-- remember to keep track of end of whole table
+	if(reset = '1' or totalRow = to_unsigned(15)) then
+		wnotr <= "000";
+		add <= "0000";
+		row <= "000";
+		enoughData <= "0";
+	elsif(totalRow >= to_unsigned(2)) then
+		enoughData <= "1";
+	end if;
 end process;
 
 o_data <= r3;
