@@ -1,0 +1,166 @@
+m255
+K3
+13
+cModel Technology
+Z0 d/home/dmalesev/ECE327/lab3
+T_opt
+Vg6Z`I6lT12=EfX^f3OK2@3
+04 7 4 work lab3_tb main 1
+=1-14dae9740821-54dbb6cc-db949-4f18
+o-quiet -auto_acc_if_foreign -work work-msim -G test_num=4
+n@_opt
+OL;O;10.1;51
+Elab3
+Z1 w1423685314
+Z2 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+Z3 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z4 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+Z5 d/home/dmalesev/ECE327/lab3
+Z6 8lab3.vhd
+Z7 Flab3.vhd
+l0
+L5
+VMDl:7lg7c8^=V[VH?hUXG0
+Z8 OL;C;10.1;51
+31
+Z9 !s108 1423685318.903870
+Z10 !s90 -93|+acc|-work|work-msim|mem.vhd|lab3.vhd|lab3_unsynth_pkg.vhd|lab3_tb.vhd|
+Z11 !s107 lab3_tb.vhd|lab3_unsynth_pkg.vhd|lab3.vhd|mem.vhd|
+Z12 o-93 +acc -work work-msim
+Z13 tExplicit 1
+!s100 6lT_4iDNC>;EBn_g8R>PL1
+!i10b 1
+Amain
+Z14 DEx4 work 3 mem 0 22 Hlg^=X_zg2gdh;?ANUU0_2
+R2
+R3
+R4
+Z15 DEx4 work 4 lab3 0 22 MDl:7lg7c8^=V[VH?hUXG0
+l27
+L15
+VF=2iMS155hOG@ImIOE7=f0
+R8
+31
+R9
+R10
+R11
+R12
+R13
+!s100 YiYg_ik7gEfo`RINUOfFN2
+!i10b 1
+Elab3_tb
+Z16 w1422983569
+Z17 DPx4 work 16 lab3_unsynth_pkg 0 22 RZze>kh[F`KN0g5XfobYN0
+R2
+R3
+R4
+R5
+Z18 8lab3_tb.vhd
+Z19 Flab3_tb.vhd
+l0
+L11
+VPYZMO0`N_:acz@P;;40Q31
+R8
+31
+R9
+R10
+R11
+R12
+R13
+!s100 l8CWli?>FDo8U:S>hVIcF0
+!i10b 1
+Amain
+R15
+R17
+R2
+R3
+R4
+DEx4 work 7 lab3_tb 0 22 PYZMO0`N_:acz@P;;40Q31
+l65
+L18
+VgL0e5:LkRdh5idzk_6JJR1
+R8
+31
+R9
+R10
+R11
+R12
+R13
+!s100 <Qf5Ok6hXKJSzaGOFclMT0
+!i10b 1
+Plab3_unsynth_pkg
+R2
+R3
+R4
+R16
+R5
+Z20 8lab3_unsynth_pkg.vhd
+Z21 Flab3_unsynth_pkg.vhd
+l0
+L16
+VRZze>kh[F`KN0g5XfobYN0
+R8
+31
+b1
+R9
+R10
+R11
+R12
+R13
+!s100 fkH3j9:9e]PFnWD9NHNZ^2
+!i10b 1
+Bbody
+R17
+R2
+R3
+R4
+l0
+L43
+VL[DBa]RKjc<[M`7:7@Gj42
+R8
+31
+R9
+R10
+R11
+R12
+R13
+nbody
+!s100 =[O][c^@Xj43N2K5nJ^890
+!i10b 1
+Emem
+R16
+R2
+R3
+R4
+R5
+Z22 8mem.vhd
+Z23 Fmem.vhd
+l0
+L5
+VHlg^=X_zg2gdh;?ANUU0_2
+R8
+31
+R9
+R10
+R11
+R12
+R13
+!s100 >YImPQZMQNlWi<3NM60gz3
+!i10b 1
+Amain
+R2
+R3
+R4
+R14
+l25
+L19
+V9OAEDkdDVS0YMDg98V9oK1
+R8
+31
+R9
+R10
+R11
+R12
+R13
+!s100 6Zn4K5PXCT7a7BNN]T[Xg1
+!i10b 1

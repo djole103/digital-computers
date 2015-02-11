@@ -19,34 +19,35 @@ architecture main of lab3 is
 	signal row : rows;
 	signal enoughData : std_logic;
 	signal totalRow : unsigned(3 downto 0);
-
-	
+	signal count : unsigned(7 downto 0):="00000000";
+	signal test : unsigned(7 downto 0);
 
 
 
 begin
+	test <= "00000011";
+--	count <= "00000011";
+	o_data <= count;
 	  mem_1 : entity work.mem(main) port map (
 		  address  => add,
 		  clock    => clk,
-		  data     => i_data,
+		  data     => std_logic_vector(i_data),
 		  wren     => wnotr(0),
 		  q        => row(0)
 		);
   
-  mem_2 : entity work.mem(main)
-    port map (
+  mem_2 : entity work.mem(main) port map (
 	  address  => add,
 	  clock    => clk,
-	  data     => i_data,
+	  data     => std_logic_vector(i_data),
 	  wren     => wnotr(1),
 	  q        => row(1)
     );
   
-  mem_3 : entity work.mem(main)
-    port map (
+  mem_3 : entity work.mem(main) port map (
 	  address  => add,
 	  clock    => clk,
-	  data     => i_data,
+	  data     => std_logic_vector(i_data),
 	  wren     => wnotr(2),
 	  q        => row(2)
     );
@@ -54,8 +55,8 @@ begin
 main : process
 begin
 	wait until rising_edge(clk);
-	if(i_valid and not reset) then
-			add <= add + 1;
+	if(i_valid = '1' and reset = '0') then
+			add <= std_logic_vector(unsigned(add)+1);
 	end if;
 end process;
 
@@ -63,14 +64,16 @@ control : process
 begin
 	wait until rising_edge(clk);
 	-- reset or done table
-	if(reset = '1' or totalRow = to_unsigned(15)) then
+	--count <= "00000111";
+	if(reset = '1' or totalRow = 15) then
 		wnotr <= "001";
 		add <= "0000";
-		enoughData <= "0";
+		enoughData <= '0';
 		totalRow <= "0000";
+		count <= "00000000";
 	--enough data
-	elsif(totalRow = to_unsigned(2)) then
-		enoughData <= "1";
+	elsif(totalRow = 2) then
+		enoughData <= '1';
 	end if;
 end process;
 
@@ -94,18 +97,19 @@ end process;
 --once you have enough data will always be writing to 'c'
 arithmetic : process
 begin
-	if(i_valid and not reset and enoughData) then
+	wait until rising_edge(clk);
+	if(i_valid = '1' and reset = '0' and enoughData = '1') then
 		case wnotr is
 			when "001" =>
-				if(row(1) + row(2) - row(0) >=0) then
+				if(signed(row(1)) + signed(row(2)) - signed(row(0)) >=0) then
 				 	count <= count+1;
 				end if;
 			when "010" =>
-				if(row(2) + row(0) - row(1) >= 0) then
+				if(signed(row(2)) + signed(row(0)) - signed(row(1)) >= 0) then
 					count <= count+1;
 				end if;
 			when "100" =>
-				if(row(0) + row(1) - row(2)>=0) then
+				if(signed(row(0)) + signed(row(1)) - signed(row(2))>=0) then
 					count <= count+1;
 				end if;
 			when others =>
@@ -114,7 +118,6 @@ begin
 	end if;
 end process;
 
-o_data <= count;
   
 end architecture main;
 
