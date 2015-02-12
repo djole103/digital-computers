@@ -1,0 +1,174 @@
+m255
+K3
+13
+cModel Technology
+Z0 d/home/dmalesev/ECE327/lab3
+T_opt
+Vg6Z`I6lT12=EfX^f3OK2@3
+Z1 04 7 4 work lab3_tb main 1
+=1-14dae9740821-54dbb6cc-db949-4f18
+o-quiet -auto_acc_if_foreign -work work-msim -G test_num=4
+n@_opt
+Z2 OL;O;10.1;51
+Z3 d/home/dmalesev/ECE327/lab3
+T_opt1
+VXA;2[zZl9SZ1F>EVEBYW^3
+R1
+=1-74d02b26ff76-54dcf930-df9c9-733c
+o-quiet -auto_acc_if_foreign -work work-msim -G testnum=2
+n@_opt1
+R2
+Elab3
+Z4 w1423767841
+Z5 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+Z6 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z7 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+Z8 d/home/hkheradm/ece327/lab3
+Z9 8lab3.vhd
+Z10 Flab3.vhd
+l0
+L5
+VoLF@fdn<i1DEMj5SbEKfM1
+Z11 OL;C;10.1;51
+31
+Z12 !s108 1423767851.512878
+Z13 !s90 -93|+acc|-work|work-msim|mem.vhd|lab3.vhd|lab3_unsynth_pkg.vhd|lab3_tb.vhd|
+Z14 !s107 lab3_tb.vhd|lab3_unsynth_pkg.vhd|lab3.vhd|mem.vhd|
+Z15 o-93 +acc -work work-msim
+Z16 tExplicit 1
+!s100 b1C<Qm`0T7U^V?AiomH7H2
+!i10b 1
+Amain
+Z17 DEx4 work 3 mem 0 22 Hlg^=X_zg2gdh;?ANUU0_2
+R5
+R6
+R7
+Z18 DEx4 work 4 lab3 0 22 oLF@fdn<i1DEMj5SbEKfM1
+l31
+L20
+VdZlGDVo=5In^JWkb;TlC32
+R11
+31
+R12
+R13
+R14
+R15
+R16
+!s100 ZY`9f8VBDk?JmdolFUAgm0
+!i10b 1
+Elab3_tb
+Z19 w1423501271
+Z20 DPx4 work 16 lab3_unsynth_pkg 0 22 RZze>kh[F`KN0g5XfobYN0
+R5
+R6
+R7
+R8
+Z21 8lab3_tb.vhd
+Z22 Flab3_tb.vhd
+l0
+L11
+VPYZMO0`N_:acz@P;;40Q31
+R11
+31
+R12
+R13
+R14
+R15
+R16
+!s100 l8CWli?>FDo8U:S>hVIcF0
+!i10b 1
+Amain
+R18
+R20
+R5
+R6
+R7
+DEx4 work 7 lab3_tb 0 22 PYZMO0`N_:acz@P;;40Q31
+l65
+L18
+VgL0e5:LkRdh5idzk_6JJR1
+R11
+31
+R12
+R13
+R14
+R15
+R16
+!s100 <Qf5Ok6hXKJSzaGOFclMT0
+!i10b 1
+Plab3_unsynth_pkg
+R5
+R6
+R7
+R19
+R8
+Z23 8lab3_unsynth_pkg.vhd
+Z24 Flab3_unsynth_pkg.vhd
+l0
+L16
+VRZze>kh[F`KN0g5XfobYN0
+R11
+31
+b1
+R12
+R13
+R14
+R15
+R16
+!s100 fkH3j9:9e]PFnWD9NHNZ^2
+!i10b 1
+Bbody
+R20
+R5
+R6
+R7
+l0
+L43
+VL[DBa]RKjc<[M`7:7@Gj42
+R11
+31
+R12
+R13
+R14
+R15
+R16
+nbody
+!s100 =[O][c^@Xj43N2K5nJ^890
+!i10b 1
+Emem
+R19
+R5
+R6
+R7
+R8
+Z25 8mem.vhd
+Z26 Fmem.vhd
+l0
+L5
+VHlg^=X_zg2gdh;?ANUU0_2
+R11
+31
+R12
+R13
+R14
+R15
+R16
+!s100 >YImPQZMQNlWi<3NM60gz3
+!i10b 1
+Amain
+R5
+R6
+R7
+R17
+l25
+L19
+V9OAEDkdDVS0YMDg98V9oK1
+R11
+31
+R12
+R13
+R14
+R15
+R16
+!s100 6Zn4K5PXCT7a7BNN]T[Xg1
+!i10b 1

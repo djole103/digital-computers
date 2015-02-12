@@ -8,7 +8,12 @@ entity lab3 is
     reset     : in  std_logic;             -- reset
     i_valid   : in  std_logic;             -- input data is valid
     i_data    : in  unsigned(7 downto 0);  -- input data
-    o_data    : out unsigned(7 downto 0)   -- output data
+    o_data    : out unsigned(7 downto 0);   -- output data
+		o_address : out std_logic_vector(3 downto 0);
+		o_totalrow : out unsigned(3 downto 0);
+		o_enoughdata : out std_logic;
+		o_wnotr : out std_logic_vector(2 downto 0);
+		o_count : out unsigned(7 downto 0)
   );
 end entity lab3;
 
@@ -20,21 +25,24 @@ architecture main of lab3 is
 	signal enoughData : std_logic;
 	signal totalRow : unsigned(3 downto 0);
 	signal count : unsigned(7 downto 0):="00000000";
-	signal test : unsigned(7 downto 0);
 
 
 
 begin
-	test <= "00000011";
---	count <= "00000011";
-	o_data <= count;
-	  mem_1 : entity work.mem(main) port map (
-		  address  => add,
-		  clock    => clk,
-		  data     => std_logic_vector(i_data),
-		  wren     => wnotr(0),
-		  q        => row(0)
-		);
+
+	o_address <= add;
+	o_totalrow <= totalRow;
+	o_enoughdata <= enoughData;
+	o_count <= count;
+	o_wnotr <= wnotr;
+	o_data <= count; 
+	mem_1 : entity work.mem(main) port map (
+		address  => add,
+		clock    => clk,
+		data     => std_logic_vector(i_data),
+		wren     => wnotr(0),
+		q        => row(0)
+	);
   
   mem_2 : entity work.mem(main) port map (
 	  address  => add,
@@ -52,13 +60,6 @@ begin
 	  q        => row(2)
     );
 
-main : process
-begin
-	wait until rising_edge(clk);
-	if(i_valid = '1' and reset = '0') then
-			add <= std_logic_vector(unsigned(add)+1);
-	end if;
-end process;
 
 control : process 
 begin
@@ -72,14 +73,13 @@ begin
 		totalRow <= "0000";
 		count <= "00000000";
 	--enough data
-	elsif(totalRow = 2) then
+	end if;
+	if(totalRow = 2) then
 		enoughData <= '1';
 	end if;
-end process;
-
-wrcontrol : process
-begin
-	wait until rising_edge(clk);
+	if(i_valid = '1' and reset = '0') then
+			add <= std_logic_vector(unsigned(add)+1);
+	end if;
 	--finished writing to a row need to reset and change wren
 	if(add="1111") then
 		add <= "0000";
@@ -94,8 +94,8 @@ begin
 		end case;
 	end if;
 end process;
---once you have enough data will always be writing to 'c'
-arithmetic : process
+
+counter : process
 begin
 	wait until rising_edge(clk);
 	if(i_valid = '1' and reset = '0' and enoughData = '1') then
@@ -118,7 +118,6 @@ begin
 	end if;
 end process;
 
-  
 end architecture main;
 
 -- Q1: number of flip flops and lookup tables?

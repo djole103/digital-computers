@@ -12,9 +12,11 @@ if { 1 } then {
   #------------------------------------------
   # signals that are traced in --prog mode 
   #
-  # add wave -color "cornflower blue" -radix unsigned sim:/lab3_tb/uut/foo
-  # add wave -color "coral"           -radix decimal  sim:/lab3_tb/uut/bar
-  # add wave -color "slate blue"                      sim:/lab3_tb/uut/blah
+   add wave -color "cornflower blue" -radix unsigned sim:/lab3_tb/uut/o_enoughdata
+   add wave -color "coral"           -radix unsigned  sim:/lab3_tb/uut/o_address
+   add wave -color "slate blue"                      sim:/lab3_tb/uut/o_totalrow
+   add wave -color "slate blue"                      sim:/lab3_tb/uut/o_count
+   add wave -color "slate blue"                      sim:/lab3_tb/uut/o_wnotr
   #------------------------------------------
 } else {
   #------------------------------------------
